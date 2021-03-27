@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/d-r-lenin/Notifyer/issues"
   },
-  "homepage": "https://github.com/d-r-lenin/Notifyer#readme"
+  "homepage": "https://github.com/d-r-lenin/Notifyer#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-mailer": "^0.1.1"
+  }
 }
