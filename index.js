@@ -7,5 +7,5 @@ app.use(express.json());
 
 
 app.get('/',(req,res,err)=>{
-   res.send('index.js');
+   res.send('index.html');
 });
