@@ -1,0 +1,19 @@
+{
+  "name": "notifyer",
+  "version": "1.0.0",
+  "description": "notifyer",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/d-r-lenin/Notifyer.git"
+  },
+  "author": "Richard Lenin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/d-r-lenin/Notifyer/issues"
+  },
+  "homepage": "https://github.com/d-r-lenin/Notifyer#readme"
+}
