@@ -22,7 +22,7 @@ app.use(cookieSession({keys:['qqqpwoeirutylaksjdhfgzmxncbvewasscjggjcjgcmnncjhdu
 app.set('view engine','ejs')
 
 
-mongoose.connect('mongodb+srv://ricksdb-1:iam00richard@cluster0.v8obg.mongodb.net/maillists?retryWrites=true&w=majority',{
+mongoose.connect('<your database connection string>',{
    useNewUrlParser: true,
    useUnifiedTopology: true
 },()=>console.log('connected to db'));
