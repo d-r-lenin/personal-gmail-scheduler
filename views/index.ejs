@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>notiMailer</title>
+   </head>
+   <body>
+      <form action="/set" method="post">
+         <table>
+            <tr>
+               <td><strong>Title</strong></td>
+               <td><input name="title"></td>
+            </tr>
+            <tr>
+            <tr>
+               <td><strong>Date & Time</strong></td>
+               <td><input type="datetime-local" name="time" required></td>
+            </tr>
+            <tr>
+               <td><strong>Email</strong></td>
+               <td><input type="email" name="email" required></td>
+            </tr>
+            <tr>
+               <td><strong>Message</strong></td>
+               <td><textarea name="message" rows="3" cols="80"></textarea></td>
+            </tr>
+            <tr>
+               <td><strong>HTML</strong></td>
+               <td><textarea name="html" rows="3" cols="80"></textarea></td>
+            </tr>
+            <tr>
+               <td><strong>Set</strong></td>
+               <td><button type="submit">Accept</button></td>
+            </tr>
+         </table>
+      </form>
+      <div class="ex">
+         <h1><button onclick = "location.reload();">REFRESH</button></h1>
+         <% if(data[0]){ %>
+            <ul>
+               <% for(i in data){ %>
+               <li>
+                  <span>
+                  <% if(data[i].title){ %>
+                        <%= data[i].title %>
+                     <% } %>
+                  </span>
+                  <address>
+                     <%= data[i].email %>
+                  </address>
+                  <span><small>
+                     <% date = new Date(data[i].time); %>
+                     <%= date %>
+                  </small>
+                  </span>
+                  <p>message:: <%= data[i].message %></p>
+                  <% if(data[i].html !== ''){ %>
+                     <p>html:: <%= data[i].html %></p>
+                  <% } %>
+                  <form display="inline" action="/delete" method="post">
+                     <input type="text" style="display:none" name="id" value="<%= data[i].id %>">
+                     <button type="submit">Delete</button>
+                  </form>
+               </li>
+            <% } %>
+            </ul>
+         <% } %>
+      </div>
+   </body>
+</html>
