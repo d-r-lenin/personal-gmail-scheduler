@@ -1,22 +1,37 @@
 const nodemailer = require('nodemailer');
+const { google } = require('googleapis');
 
 const User = require('../models/user.js');
 
-const transporter = nodemailer.createTransport({
-   service: 'gmail',
-   auth: {
-      user: process.env.gmail,
-      pass: process.env.pass
-   }
-});
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const REDIRECT_URI = process.env.REDIRECT_URI;
+const REFRESH_TOKEN = process.env.REFRESH_TOKEN;
+
+const OAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI)
+OAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN })
 
 async function sendEmail(data){
+   const access_token = OAuth2Client.getAccessToken();
+   const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+         user: process.env.gmail,
+         type: 'OAuth2',
+         clientId: CLIENT_ID,
+         clientSecret: CLIENT_SECRET,
+         refreshToken: REFRESH_TOKEN,
+         accessToken: access_token
+      }
+   });
+
    const mailOptions = {
-      from: process.env.gmail,
+      from: `D.R.Lenin 📧<${process.env.gmail}>`,
       to: data.email,
       subject: data.title,
       text: 'Hi'
    };
+
    if(data.message !== '')
       mailOptions.text = data.message;
    if(data.html !=='')

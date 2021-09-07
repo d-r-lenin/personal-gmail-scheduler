@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -16,13 +18,13 @@ const {
 
 const app = express();
 
-app.use(bodyParser.urlencoded({extended : true}));
+app.use(express.urlencoded({extended : true}));
 app.use(express.static('public'))
 app.use(cookieSession({keys:['qqqpwoeirutylaksjdhfgzmxncbvewasscjggjcjgcmnncjhduxhgfddd']}));
 app.set('view engine','ejs')
 
 
-mongoose.connect('<your database connection string>',{
+mongoose.connect(process.env.DB_STRING,{
    useNewUrlParser: true,
    useUnifiedTopology: true
 },()=>console.log('connected to db'));
