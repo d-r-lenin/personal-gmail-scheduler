@@ -228,11 +228,10 @@
                                     <%  }   %>
                                     <% return ans;  %>
                                 <% } %>
-                                <% console.log(`${date.getFullYear()}-${format(date.getMonth())}-${format(date.getDate())}T${date.toTimeString().slice(0,8)}`); %> 
                             <input
                                 class="form-control"
-                                <% date = new Date(data[i].time); %>
-                                <% Dstring = `${date.getFullYear()}-${format(date.getMonth())}-${format(date.getDate())}T${date.toTimeString().slice(0,8)}` %> 
+                                <% let date = new Date(data[i].time); %>
+                                <% let Dstring = `${date.getFullYear()}-${format(date.getMonth())}-${format(date.getDate())}T${date.toTimeString().slice(0,8)}` %> 
                                 value="<%= Dstring %>"
                                 type="datetime-local"
                                 readonly=""
